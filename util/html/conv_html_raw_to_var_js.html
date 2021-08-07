@@ -1,0 +1,37 @@
+<a href="https://stackoverflow.com/questions/33409288/convert-html-code-to-javascript-variable-string">Source Code</a>
+<button>Create variable</button>
+
+<pre id="output"></pre>
+
+<textarea id="input">
+
+</textarea>
+
+<style>
+textarea {
+  height: 20em;
+  width: 100%;
+}
+
+pre {
+  white-space: pre-wrap;
+  background: #246;
+  color: white;
+  padding: 0.2em;
+}
+</style>
+
+<script>
+document.querySelector('button').addEventListener('click', makeVariable);
+
+function makeVariable() {
+  var code= document.getElementById('input').value.trim(),
+      output= document.getElementById('output');
+  
+  output.textContent= 'var myVariable= "'+
+                      code.replace(/\\/g, '\\\\')
+                          .replace(/"/g, '\\"')
+                          .replace(/[\n\r]/g, '\\n')+
+                      '";';
+}
+</script>
